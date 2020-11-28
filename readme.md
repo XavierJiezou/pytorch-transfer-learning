@@ -9,6 +9,7 @@ These two major transfer learning scenarios look as follows:
 The problem we’re going to solve today is to train a model to classify ants and bees. We have about 120 training images each for ants and bees. There are 75 validation images for each class. Usually, this is a very small dataset to generalize upon, if trained from scratch. Since we are using transfer learning, we should be able to generalize reasonably well.
 # download dataset
 > [https://ghgxj.lanzous.com/i9EGHiv97za](https://ghgxj.lanzous.com/i9EGHiv97za)
+
 | class | train | val |
 |:---:|:---:|:---:|
 | ants | 123 | 70  |
