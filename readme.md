@@ -296,7 +296,7 @@ def visualize_model(model):
 ```
 ![](https://img-blog.csdnimg.cn/20201128210657638.png#pic_center)
 # save model
-> want more details about save and load model of `pytorch`, click [here](https://blog.csdn.net/qq_42951560/article/details/109545302)文章
+> want more details about save and load model of `pytorch`, click [here](https://blog.csdn.net/qq_42951560/article/details/109545302)
 ```python
 torch.save(model_conv.state_dict(), 'model.pt')
 ```
