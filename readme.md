@@ -254,7 +254,7 @@ EPOCH: 10/10 LR: 0.0001 LOSS: 0.3523 ACC: 0.8361  VAL-LOSS: 0.2687 VAL-ACC: 0.90
 ----------
 TOTAL-TIME: 1m10s BEST-VAL-ACC: 0.9085
 ```
-training `10` epochs, total time `1m10s`, best val-acc `0.9085`
+Training `10` epochs, total time `1m10s`, best val-acc `0.9085`
 - convNet as fixed feature extractor
 ```python
 EPOCH: 01/10 LR: 0.0010 LOSS: 0.7262 ACC: 0.6598  VAL-LOSS: 0.2515 VAL-ACC: 0.9085
@@ -270,7 +270,7 @@ EPOCH: 10/10 LR: 0.0001 LOSS: 0.2999 ACC: 0.8770  VAL-LOSS: 0.2250 VAL-ACC: 0.93
 ----------
 TOTAL-TIME: 0m45s BEST-VAL-ACC: 0.9542
 ```
-training `10` epochs, total time `0m46s`, best val-acc `0.9542`
+Training `10` epochs, total time `0m46s`, best val-acc `0.9542`
 > By comparison, the total time of convNet as fixed feature extractor is shorter and the accuracy rate is higher.
 # evaluate
 ```python
@@ -296,7 +296,7 @@ def visualize_model(model):
 ```
 ![](https://img-blog.csdnimg.cn/20201128210657638.png#pic_center)
 # save model
-> want more details about save and load model of `pytorch`, click [here](https://blog.csdn.net/qq_42951560/article/details/109545302)
+> Want more details about save and load model of `pytorch`, click [here](https://blog.csdn.net/qq_42951560/article/details/109545302)
 ```python
 torch.save(model_conv.state_dict(), 'model.pt')
 ```
@@ -309,11 +309,11 @@ model.fc = nn.Linear(num_ftrs, len(class_names))
 model.load_state_dict(torch.load('model.pt', map_location=device))
 ```
 # test model
-> randomly find a few pictures of ants and bees in Bing images, then test the model loaded in the previous step
+> Randomly find a few pictures of ants and bees in Bing images, then test the model loaded in the previous step
 
 ![](https://img-blog.csdnimg.cn/20201128210243533.png#pic_center)
 # deploy online
-you can also deploy your machine learning model online if you are interested, like this：
+You can also deploy your machine learning model online if you are interested, like this：
 > [https://pytorch-cnn-mnist.herokuapp.com/](https://pytorch-cnn-mnist.herokuapp.com/)
 
 ![](https://img-blog.csdnimg.cn/20201116162845484.gif#pic_center)
