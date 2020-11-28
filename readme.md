@@ -334,68 +334,7 @@ model.load_state_dict(torch.load('model.pt', map_location=device))
 ```
 # 测试模型
 > 百度或必应图片中随便找几张张蚂蚁和蜜蜂的图片，或者用手机拍几张照片也行。用上一步加载的模型测试一下分类的效果。
-```python
-# test.py
-import torch
-import torch.nn as nn
-import matplotlib.pyplot as plt
-from torch.utils.data import DataLoader
-from torchvision import datasets, models, transforms
 
-
-# 图片预处理
-test_transforms = transforms.Compose([
-    transforms.Resize(256),
-    transforms.CenterCrop(224),
-    transforms.ToTensor()
-])
-
-
-# 制作数据集
-test_dataset = datasets.ImageFolder(
-    root='./test',
-    transform=test_transforms
-)
-
-
-# 数据加载器
-test_loader = DataLoader(
-    dataset=test_dataset,
-    batch_size=4,
-    shuffle=False,
-    num_workers=0
-)
-
-# 加载模型
-device = torch.device('cpu')
-class_names = test_dataset.classes
-model = models.resnet18(pretrained=False)
-num_ftrs = model.fc.in_features
-model.fc = nn.Linear(num_ftrs, len(class_names))
-model.load_state_dict(torch.load('model.pt', map_location=device))
-
-# 可视化函数
-def visualize_model(model):
-    model.eval()
-    with torch.no_grad():
-        inputs, labels = next(iter(test_loader))
-
-        outputs = model(inputs)
-        preds = outputs.argmax(1)
-
-        plt.figure(figsize=(9, 9))
-        for i in range(inputs.size(0)):
-            plt.subplot(2, 2, i+1)
-            plt.axis('off')
-            plt.title(f'pred: {class_names[preds[i]]}|true: {class_names[labels[i]]}')
-            im = inputs[i].permute(1, 2, 0)
-            plt.imshow(im)
-        plt.savefig('old.jpg')
-        plt.show()
-
-# 可视化结果
-visualize_model(model)
-```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20201128210243533.png#pic_center)
 # 线上部署
 有兴趣的话，你还可以将你的机器学习模型部署到线上。下方就是一个**手写数字**模型线上成功部署的实例：
