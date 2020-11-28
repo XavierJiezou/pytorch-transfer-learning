@@ -327,7 +327,9 @@ torch.save(model_conv.state_dict(), 'model.pt')
 > 更详细的`pytorch`保存和加载模型的方法可以看我的[这篇](https://blog.csdn.net/qq_42951560/article/details/109545302)文章
 ```python
 device = torch.device('cpu')
-model = TheModelClass(*args, **kwargs)
+model = models.resnet18(pretrained=False)
+num_ftrs = model.fc.in_features
+model.fc = nn.Linear(num_ftrs, len(class_names))
 model.load_state_dict(torch.load('model.pt', map_location=device))
 ```
 # 测试模型
